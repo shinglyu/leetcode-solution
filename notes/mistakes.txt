@@ -1,0 +1,19 @@
+# Common mistakes
+* Edge cases
+  * empty list?
+  * negative value?
+* Scalability
+  * Integer that exceeds the limit
+  * Super long lists/strings
+* Work in-place instead of creating expensive intermediate data structures
+* Know your Integer limits and binary operations!
+* Bad text input
+  * empty string
+  * negative
+  * Repeated specail char or special char in wrong place ( +12.3 => ++12.3.4 )
+  * Out of int bound
+  * spaces
+
+# Tips
+* Use bit array ([0 1 0 1 0]) to save time (no list.append), or use sparse address list to save space ([ 1 2 ])
+
