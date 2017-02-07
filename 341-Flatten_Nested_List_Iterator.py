@@ -59,9 +59,32 @@
 #                     s.append([x.getList(), 0])
 #         return False
 
+# class NestedIterator(object):
+#
+#     def __init__(self, nestedList):
+#         def gen(nestedList):
+#             for x in nestedList:
+#                 if x.isInteger():
+#                     yield x.getInteger()
+#                 else:
+#                     for y in gen(x.getList()):
+#                         yield y
+#         self.gen = gen(nestedList)
+#
+#     def next(self):
+#         return self.value
+#
+#     def hasNext(self):
+#         try:
+#             self.value = next(self.gen)
+#             return True
+#         except StopIteration:
+#             return False
+#
 class NestedIterator(object):
 
     def __init__(self, nestedList):
+        self.peek = None
         def gen(nestedList):
             for x in nestedList:
                 if x.isInteger():
@@ -72,14 +95,23 @@ class NestedIterator(object):
         self.gen = gen(nestedList)
 
     def next(self):
-        return self.value
+        if self.peek is None:
+            return next(self.gen)
+        else:
+            tmp = self.peek
+            self.peek = None
+            return tmp
+
 
     def hasNext(self):
-        try:
-            self.value = next(self.gen)
+        if self.peek is None:
+            try:
+                self.peek = next(self.gen)
+                return True
+            except StopIteration:
+                return False
+        else:
             return True
-        except StopIteration:
-            return False
 
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
