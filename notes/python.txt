@@ -1,0 +1,3 @@
+* Generator: Call `next(generator)` to get next element, will raise `StopIteration` exception when done.
+* Quick swapping without a temp variable: `a, b = b, a`
+
