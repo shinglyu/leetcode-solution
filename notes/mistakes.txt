@@ -13,6 +13,8 @@
   * Repeated specail char or special char in wrong place ( +12.3 => ++12.3.4 )
   * Out of int bound
   * spaces
+* Don't forget to return the result
+* Be careful about substring indexing, especially s[-x:] if x == 0 then it will be the whole string, but you might want the empty string at the end
 
 # Tips
 * Use bit array ([0 1 0 1 0]) to save time (no list.append), or use sparse address list to save space ([ 1 2 ])
